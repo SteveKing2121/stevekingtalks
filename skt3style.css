@@ -10,7 +10,7 @@ body {
   text-align: center;
 }
 .parallax {
-  background: url("img/Onstage1.jpg") fixed;
+  background: url("../Images/Onstage1.jpg") fixed;
   background-size: cover;
 }
 
@@ -84,7 +84,7 @@ h4 {
 }
 
 .parallax2 {
-  background: url("img/Onstage2.jpg") fixed;
+  background: url("../Images/Onstage2.jpg") fixed;
   background-size: cover;
 }
 
