@@ -11,7 +11,7 @@ body {
 }
 .parallax {
   background: url("img/Onstage1.jpg") fixed;
-  background-size: contain;
+  background-size: cover;
 }
 
 .parallax-inner {
@@ -85,7 +85,7 @@ h4 {
 
 .parallax2 {
   background: url("img/Onstage2.jpg") fixed;
-  background-size: contain;
+  background-size: cover;
 }
 
 .parallax-inner2 {
