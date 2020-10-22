@@ -1,3 +1,8 @@
+/* *,
+* > * {
+  border: 1px solid red;
+} */
+
 body {
   margin: 0;
   padding: 0;
@@ -9,8 +14,9 @@ body {
   background-color: #d82c66;
   text-align: center;
 }
+
 .parallax {
-  background: url("img/Onstage1.jpg") scroll;
+  background: url("img/Onstage1.jpg") fixed;
   background-size: cover;
 }
 
@@ -19,7 +25,30 @@ body {
   padding-top: 10%;
   padding-bottom: 10%;
   text-align: left;
-  max-width: 50%;
+}
+
+.parallax2 {
+  background: url("img/Onstage2.jpg") fixed;
+  background-size: cover;
+}
+
+.parallax-inner2 {
+  min-height: 400px;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  text-align: right;
+}
+
+@media only screen and (max-device-width: 1025px) {
+  .parallax {
+    background: url("img/Onstage1.jpg") scroll;
+    background-size: 100%;
+  }
+
+  .parallax2 {
+    background: url("img/Onstage2.jpg") scroll;
+    background-size: 100%;
+  }
 }
 
 .quotes {
@@ -31,11 +60,13 @@ h2 {
   font-size: 2.5rem;
   margin-left: 50px;
   margin-right: 50px;
+  max-width: 50%;
+  display: inline-block;
 }
 
 h2 .quoter {
   padding-top: 20px;
-  display: inline-block;
+  display: block;
   font-weight: normal;
   font-size: 1.5rem;
 }
@@ -82,18 +113,6 @@ h4 {
 
 .container2 h4 {
   text-align: justify;
-}
-
-.parallax2 {
-  background: url("img/Onstage2.jpg") scroll;
-  background-size: cover;
-}
-
-.parallax-inner2 {
-  min-height: 400px;
-  padding-top: 10%;
-  padding-bottom: 10%;
-  text-align: right;
 }
 
 .footer {
