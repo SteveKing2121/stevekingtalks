@@ -10,7 +10,7 @@ body {
   text-align: center;
 }
 .parallax {
-  background: url("img/Onstage1.jpg") fixed;
+  background: url("img/Onstage1.jpg") scroll;
   background-size: cover;
 }
 
