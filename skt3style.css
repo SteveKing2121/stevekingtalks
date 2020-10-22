@@ -30,6 +30,7 @@ h2 {
   font-size: 2.5rem;
   margin-left: 50px;
   margin-right: 50px;
+  max-width: 60%;
 }
 
 h2 .quoter {
@@ -84,7 +85,7 @@ h4 {
 }
 
 .parallax2 {
-  background: url("img/Onstage2.jpg") fixed;
+  background: url("img/Onstage2.jpg") scroll;
   background-size: cover;
 }
 
