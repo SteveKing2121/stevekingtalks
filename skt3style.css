@@ -88,6 +88,12 @@ h4 {
   text-align: centre;
 }
 
+iframe {
+  height: auto;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
 .logo {
   position: relative;
   max-width: 300px;
