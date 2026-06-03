@@ -1,386 +1,1230 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-<head>
-  <title>Steve King Talks</title>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-012EC05221"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steve King Talks</title>
+    <link rel="icon" type="image/png" href="img/skt_logo_pink.png">
 
-    gtag("config", "G-012EC05221");
-  </script>
-  <link rel="stylesheet" href="skt3style.css" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-012EC05221"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-012EC05221');
+    </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet" />
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
 
-<body>
-  <div class="margin">
-    <img class="logo" src="img/skt-logo-trans.png" />
-  </div>
-  <section class="parallax">
-    <div class="parallax-inner">
-      <h2 data-aos="fade-right">
-        "Outstanding. Highly entertaining and very informative.”
-        <span class="quoter">Arts Society - Kings Lynn</span>
-      </h2>
+    <style>
+      /* ── TOKENS ───────────────────────────────────────────── */
+      :root {
+        --ink: #0F0B09;
+        --bone: #F4EFE4;
+        --paper: #FBF7EC;
+        --pink: #D82C66;
+        --pink-hot: #FF3A78;
+        --line: rgba(15, 11, 9, 0.16);
+        --dim: #6E6557;
+        --body: #2C2722;
+        --mono: "IBM Plex Mono", ui-monospace, monospace;
+        --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+        --px: 48px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bone);
+        color: var(--ink);
+        font-family: var(--sans);
+        line-height: 1.55;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* ── IMAGE PLACEHOLDER ────────────────────────────────── */
+      .img-slot {
+        background: repeating-linear-gradient(135deg, #f3ede0 0 14px, #e9e1cf 14px 28px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6b5e48;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 16px;
+        line-height: 1.5;
+      }
+
+      .img-slot span {
+        max-width: 85%;
+        display: block;
+      }
+
+      /* ── STATUS BAR ───────────────────────────────────────── */
+      .status-bar {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--dim);
+        padding: 10px var(--px);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .status-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+
+      .status-bar span {
+        white-space: nowrap;
+      }
+
+      .status-mid {}
+
+      @media (max-width: 699px) {
+        .status-mid {
+          display: none;
+        }
+      }
+
+      .live-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--pink);
+        box-shadow: 0 0 0 4px rgba(216, 44, 102, 0.15);
+        animation: pulse 1s ease-in-out infinite;
+        flex-shrink: 0;
+      }
+
+      @keyframes pulse {
+
+        0%,
+        100% {
+          box-shadow: 0 0 0 4px rgba(216, 44, 102, 0.15);
+        }
+
+        50% {
+          box-shadow: 0 0 0 4px rgba(216, 44, 102, 0.05);
+        }
+      }
+
+      /* ── HERO ─────────────────────────────────────────────── */
+      .hero {
+        padding: 72px var(--px) 48px;
+      }
+
+      .hero-eyebrow {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--pink);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .eyebrow-rule {
+        flex: 1;
+        height: 1px;
+        background: var(--line);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 48px;
+      }
+
+      .hero h1 {
+        font-family: var(--sans);
+        font-size: 124px;
+        font-weight: 700;
+        line-height: 0.92;
+        letter-spacing: -0.025em;
+      }
+
+      .hero h1 .pink {
+        color: var(--pink);
+      }
+
+      .hero-lede {
+        font-size: 19px;
+        line-height: 1.55;
+        color: var(--body);
+        max-width: 600px;
+        margin-top: 28px;
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin-top: 36px;
+      }
+
+      .cta-primary {
+        background: var(--ink);
+        color: var(--bone);
+        padding: 16px 22px;
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      .cta-primary:hover {
+        background: #2a211c;
+      }
+
+      .cta-secondary {
+        padding: 16px 22px;
+        color: var(--ink);
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        border: 1px solid var(--line);
+      }
+
+      .cta-secondary:hover {
+        border-color: var(--ink);
+      }
+
+      .card-logo {
+        height: 80px;
+        width: auto;
+        display: block;
+        align-self: end;
+        justify-self: end;
+      }
+
+      .wave-block {
+        margin-top: 40px;
+      }
+
+      .hero-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+      }
+
+      .hero-card .img-slot {
+        width: 100%;
+        height: 360px;
+      }
+
+      .ident-grid {
+        padding: 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .ident-label {
+        color: var(--pink);
+        margin-bottom: 4px;
+      }
+
+      .ident-value {
+        color: var(--ink);
+      }
+
+      /* ── MARQUEE ──────────────────────────────────────────── */
+      .marquee-band {
+        background: var(--ink);
+        color: var(--bone);
+        font-family: var(--mono);
+        font-size: 22px;
+        letter-spacing: -0.01em;
+        font-weight: 600;
+        padding: 16px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        border-top: 1px solid var(--line);
+      }
+
+      .marquee-inner {
+        display: inline-block;
+        padding-left: 32px;
+        animation: marquee 40s linear infinite;
+      }
+
+      .marquee-band:hover .marquee-inner {
+        animation-play-state: paused;
+      }
+
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .marquee-inner .pink {
+        color: var(--pink);
+      }
+
+      /* ── SHARED EYEBROW ───────────────────────────────────── */
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--pink);
+        margin-bottom: 14px;
+      }
+
+      /* ── LISTENER MAIL ────────────────────────────────────── */
+      .listener-mail {
+        padding: 72px var(--px) 56px;
+      }
+
+      .lm-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-bottom: 32px;
+      }
+
+      .lm-header h2 {
+        font-size: 76px;
+        font-weight: 700;
+        line-height: 0.95;
+        letter-spacing: -0.025em;
+      }
+
+      .lm-header h2 .pink {
+        color: var(--pink);
+      }
+
+      .inbox-caption {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--dim);
+        text-align: right;
+        line-height: 1.7;
+      }
+
+      .featured-panel {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        padding: 40px;
+        margin-bottom: 20px;
+        display: grid;
+        grid-template-columns: 6px 1fr;
+        gap: 36px;
+        align-items: start;
+      }
+
+      .featured-bar {
+        background: var(--pink);
+        align-self: stretch;
+      }
+
+      .featured-quote {
+        font-size: 44px;
+        font-weight: 600;
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+      }
+
+      .featured-quote .pink {
+        color: var(--pink);
+      }
+
+      .featured-meta {
+        margin-top: 26px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--dim);
+      }
+
+      .caller-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .caller-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        padding: 20px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        min-height: 180px;
+      }
+
+      .caller-card.accent {
+        background: var(--pink);
+        color: var(--bone);
+        border: none;
+      }
+
+      .card-time {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--pink);
+      }
+
+      .caller-card.accent .card-time {
+        color: var(--bone);
+        opacity: 0.95;
+      }
+
+      .card-quote {
+        font-size: 18px;
+        line-height: 1.35;
+        font-weight: 500;
+        flex: 1;
+      }
+
+      .card-source {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0.7;
+        margin-top: auto;
+      }
+
+      .ticker {
+        margin-top: 22px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        padding: 14px 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .ticker-label {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--pink);
+        margin-right: 8px;
+      }
+
+      .ticker-item {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--ink);
+      }
+
+      .ticker-item.pink {
+        color: var(--pink);
+      }
+
+      /* ── SCHEDULE ─────────────────────────────────────────── */
+      .schedule {
+        padding: 0 var(--px) 56px;
+      }
+
+      .sched-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        padding-top: 32px;
+        border-top: 2px solid var(--ink);
+        margin-bottom: 20px;
+      }
+
+      .sched-header h2 {
+        font-size: 64px;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        line-height: 0.95;
+      }
+
+      .sched-caption {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--dim);
+      }
+
+      .sched-list {
+        border-top: 1px solid var(--line);
+      }
+
+      .talk-row {
+        display: grid;
+        grid-template-columns: 92px 96px 130px 1.1fr 1.5fr 110px;
+        gap: 20px;
+        align-items: center;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .talk-code {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--pink);
+        letter-spacing: 0.08em;
+        font-weight: 700;
+      }
+
+      .talk-img {
+        height: 72px;
+        width: 72px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .talk-era {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--dim);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .talk-title-link {
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.025em;
+        color: var(--ink);
+        display: block;
+      }
+
+      .talk-title-link:hover {
+        color: var(--pink);
+      }
+
+      .talk-subtitle {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--dim);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+
+      .talk-desc {
+        font-size: 13px;
+        line-height: 1.55;
+        color: var(--body);
+      }
+
+      /* ── PROFILE ──────────────────────────────────────────── */
+      .profile {
+        padding: 72px var(--px);
+        background: var(--paper);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 56px;
+      }
+
+      .profile .img-slot {
+        width: 100%;
+        height: 460px;
+      }
+
+      .profile-eyebrow {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--pink);
+        margin-bottom: 18px;
+      }
+
+      .profile h2 {
+        font-size: 54px;
+        font-weight: 700;
+        line-height: 1.0;
+        letter-spacing: -0.025em;
+        margin-bottom: 28px;
+      }
+
+      .profile h2 .pink {
+        color: var(--pink);
+      }
+
+      .profile-body p {
+        font-size: 15.5px;
+        line-height: 1.7;
+        color: var(--body);
+        margin-bottom: 14px;
+      }
+
+      .cred-grid {
+        margin-top: 28px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .cred-chip {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink);
+        padding: 10px 14px;
+        border: 1px solid var(--line);
+        background: var(--bone);
+      }
+
+      .cred-chip .bullet {
+        color: var(--pink);
+      }
+
+      /* ── FOOTER ───────────────────────────────────────────── */
+      .footer-section {
+        padding: 72px var(--px) 40px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 48px;
+        align-items: end;
+      }
+
+      .footer-eyebrow {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--pink);
+        margin-bottom: 18px;
+      }
+
+      .footer-section h2 {
+        font-size: 84px;
+        font-weight: 700;
+        line-height: 0.95;
+        letter-spacing: -0.025em;
+      }
+
+      .footer-copy {
+        font-size: 16px;
+        color: var(--dim);
+        margin-top: 18px;
+        max-width: 540px;
+      }
+
+      .footer-right {
+        text-align: right;
+      }
+
+      .footer-email {
+        font-family: var(--sans);
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--pink);
+        text-decoration: underline;
+        text-underline-offset: 8px;
+        letter-spacing: -0.025em;
+      }
+
+      .footer-email:hover {
+        color: var(--pink-hot);
+      }
+
+      .footer-sig {
+        margin-top: 56px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--dim);
+      }
+
+      /* ── RESPONSIVE ───────────────────────────────────────── */
+      @media (max-width: 1199px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .caller-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .talk-row {
+          grid-template-columns: 92px 96px 130px 1.1fr 110px;
+        }
+
+        .talk-row .talk-desc {
+          display: none;
+        }
+      }
+
+      @media (max-width: 899px) {
+        :root {
+          --px: 24px;
+        }
+
+        .caller-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .talk-row {
+          grid-template-columns: 92px 96px 1.1fr 110px;
+        }
+
+        .talk-row .talk-era {
+          display: none;
+        }
+
+        .profile {
+          grid-template-columns: 1fr;
+        }
+
+        .hero h1 {
+          font-size: 80px;
+        }
+
+        .featured-quote {
+          font-size: 32px;
+        }
+
+        .lm-header {
+          flex-wrap: wrap;
+          gap: 16px;
+        }
+      }
+
+      @media (max-width: 599px) {
+        :root {
+          --px: 20px;
+        }
+
+        .caller-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero h1 {
+          font-size: 64px;
+        }
+
+        .marquee-band {
+          font-size: 14px;
+        }
+
+        .sched-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 6px;
+        }
+
+        .sched-header h2 {
+          font-size: 42px;
+        }
+
+        .talk-row {
+          grid-template-columns: 72px 1fr;
+          gap: 12px;
+          align-items: start;
+        }
+
+        .talk-row .talk-code,
+        .talk-row .talk-era,
+        .talk-row .wave-cell {
+          display: none;
+        }
+
+        .talk-row .talk-desc {
+          display: block;
+          grid-column: 1 / -1;
+        }
+
+        .featured-quote {
+          font-size: 24px;
+        }
+
+        .featured-meta {
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-right {
+          text-align: left;
+          margin-top: 32px;
+        }
+
+        .footer-section h2 {
+          font-size: 52px;
+        }
+
+        .lm-header h2 {
+          font-size: 52px;
+        }
+
+        .status-bar {
+          font-size: 9px;
+        }
+
+        .footer-sig {
+          flex-direction: column;
+          gap: 6px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- ── 1. STATUS BAR ──────────────────────────────────────── -->
+    <header class="status-bar">
+      <span class="status-left">
+        <span class="live-dot"></span>ON AIR · Steve King Talks · 98.6 SKT
+      </span>
+      <span class="status-mid">Sched · 40yrs / 10 talks / 1 voice</span>
+      <span>sktalks@outlook.com</span>
+    </header>
+
+    <!-- ── 2. HERO ────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="hero-eyebrow">
+        <span>NOW BROADCASTING / 2026</span>
+        <span class="eyebrow-rule"></span>
+        <span>DAYTIME EDITION</span>
+      </div>
+      <div class="hero-grid">
+        <div>
+          <h1>Steve King<br><span class="pink">Talks</span></h1>
+          <p class="hero-lede">Steve King — 40 years in commercial radio, accredited lecturer for The Arts Society,
+            music historian. Ten lectures across six decades of popular music, available live and online.</p>
+          <div class="cta-row">
+            <a href="mailto:sktalks@outlook.com?subject=Booking%20enquiry" class="cta-primary">▶ Book a programme</a>
+            <!-- Showreel button: URL and duration TBD — request from client before enabling -->
+            <!-- <a href="SHOWREEL_URL" target="_blank" class="cta-secondary">Showreel · X:XX</a> -->
+          </div>
+          <div class="wave-block" id="wave-hero"></div>
+        </div>
+        <div class="hero-card">
+          <img src="img/steve_on_stage.jpg" alt="Steve King on stage"
+            style="width:100%;height:360px;object-fit:cover;object-position:top;display:block;">
+          <div class="ident-grid">
+            <div>
+              <div class="ident-label">STATION</div>
+              <div class="ident-value">SKT · 98.6 FM</div>
+            </div>
+            <div>
+              <div class="ident-label">HOST</div>
+              <div class="ident-value">Steve King</div>
+            </div>
+            <div>
+              <div class="ident-label">FORMAT</div>
+              <div class="ident-value">Live · Online</div>
+            </div>
+            <img src="img/skt_logo_pink.png" alt="SKT" class="card-logo">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 3. MARQUEE ─────────────────────────────────────────── -->
+    <div class="marquee-band" aria-hidden="true">
+      <div class="marquee-inner"><!-- content duplicated for seamless CSS loop -->
+        ★ <span class="pink">"OUTSTANDING"</span> ★ "RIVETING" ★ <span class="pink">"LAVISH IN BOTH SUBSTANCE AND
+          STYLE"</span> ★ "LONGEST OVATION I HAVE HEARD" ★ <span class="pink">"I CRIED!"</span> ★ "SCORED SO WELL
+        ONBOARD" ★
+        <span class="pink">"WONDERFUL WALK THROUGH MY YOUTH"</span> ★ "BRILLIANT" ★ <span
+          class="pink">"OUTSTANDING"</span> ★ "RIVETING" ★ <span class="pink">"LAVISH IN BOTH SUBSTANCE AND
+          STYLE"</span> ★ "LONGEST OVATION I HAVE HEARD" ★ <span class="pink">"I CRIED!"</span> ★ "SCORED SO WELL
+        ONBOARD" ★
+        <span class="pink">"WONDERFUL WALK THROUGH MY YOUTH"</span> ★ "BRILLIANT" ★&nbsp;
+      </div>
     </div>
-  </section>
 
-  <div class="container">
-    <p data-aos="zoom-in-up">
-      Steve King is a music and media specialist with over 40 years
-      experience. He is an accredited lecturer of The Arts Society and his
-      series of talks on popular music from the last 60 years have been very
-      well received by audiences around the world. A selection of those
-      currently available are listed below. For bookings and general enquiries
-      email:
-      <a class="email" href="mailto:sktalks@outlook.com">sktalks@outlook.com</a>
-    </p>
+    <!-- ── 4. LISTENER MAIL ───────────────────────────────────── -->
+    <section class="listener-mail">
+      <div class="lm-header">
+        <div>
+          <div class="eyebrow">◉ LIVE FEED · LISTENER MAIL</div>
+          <h2>Audience <span class="pink">feedback.</span></h2>
+        </div>
+        <div class="inbox-caption">2016 — present</div>
+      </div>
 
-    <h4>Feedback</h4>
+      <div class="featured-panel">
+        <div class="featured-bar"></div>
+        <div>
+          <blockquote class="featured-quote">
+            "Steve has a very easy and engaging manner which belies the highly professional way in which he approaches
+            his subject —<span class="pink">lavish in both substance and style.</span> Many of our members have asked
+            for a return visit."
+          </blockquote>
+          <div class="featured-meta">
+            <span>Rob Smith</span>
+            <span>Arts Society North Staffordshire</span>
+            <span>March 2025</span>
+          </div>
+        </div>
+      </div>
 
-    <p data-aos="zoom-in-up">
-      "Wonderful material" -
-      "Took me back to happy days" -
-      "Most enjoyable" -
-      "Brilliant" -
-      "So lively and so enthusiastically presented" -
-      "Very stimulating" -
-      "Outstanding mix of video, music and fascinating insights" -
-      "Wonderful walk through my youth" -
-      "Very well put together" -
-      "I cried!"
-      <span class="quoter">Comments from a recent Arts Society Lecture</span>
-    </p>
+      <div class="caller-grid">
+        <div class="caller-card">
+          <div class="card-time">◉ LIVE</div>
+          <div class="card-quote">"Outstanding. Highly entertaining and very informative."</div>
+          <div class="card-source">Arts Society Kings Lynn · Dec 2023</div>
+        </div>
+        <div class="caller-card accent">
+          <div class="card-time">◉ LIVE</div>
+          <div class="card-quote">"Riveting from start to finish."</div>
+          <div class="card-source">Arts Society Taunton · Jun 2025</div>
+        </div>
+        <div class="caller-card">
+          <div class="card-time">◉ LIVE</div>
+          <div class="card-quote">"The whole room was wreathed in smiles."</div>
+          <div class="card-source">Arts Society Leeds · Jun 2025</div>
+        </div>
+        <div class="caller-card">
+          <div class="card-time">◉ LIVE</div>
+          <div class="card-quote">"Longest ovation I have heard at our society."</div>
+          <div class="card-source">Arts Society Petersfield</div>
+        </div>
+        <div class="caller-card">
+          <div class="card-time">◉ LIVE</div>
+          <div class="card-quote">"They love you Steve. You went down really well onboard."</div>
+          <div class="card-source">Cunard · Queen Mary II</div>
+        </div>
+        <div class="caller-card">
+          <div class="card-time">◉ LIVE</div>
+          <div class="card-quote">"We would be interested in Stephen King if he was available for this, he scored so
+            well on his last cruise."</div>
+          <div class="card-source">P&amp;O Cruises · Azura</div>
+        </div>
+        <div class="caller-card accent">
+          <div class="card-time">◉ LIVE</div>
+          <div class="card-quote">"I've never seen our members so animated afterwards."</div>
+          <div class="card-source">Louise Capell · A.S. Richmond U.T.</div>
+        </div>
+        <div class="caller-card">
+          <div class="card-time">◉ LIVE</div>
+          <div class="card-quote">"I cried!"</div>
+          <div class="card-source">Audience member</div>
+        </div>
+      </div>
 
-    <p data-aos="zoom-in-up">
-      "I would rate the lecture OUTSTANDING. Very knowledgeable on the subject, spontaneous delivery and very clear
-      speaking voice.
-      The images were excellent and fitted exactly with his words. The musical soundtrack fitted well and was also of
-      excellent quality.
-      I would definitely invite him back. It was all "very professional.”
-      "The whole room was wreathed in smiles! Brilliant pace, diction, voice tone."
+      <div class="ticker">
+        <span class="ticker-label">INCOMING ⇢</span>
+        <span class="ticker-item pink">"Wonderful material"</span><span class="ticker-item"> ·</span>
+        <span class="ticker-item">"Took me back to happy days"</span><span class="ticker-item"> ·</span>
+        <span class="ticker-item">"Most enjoyable"</span><span class="ticker-item"> ·</span>
+        <span class="ticker-item pink">"Brilliant"</span><span class="ticker-item"> ·</span>
+        <span class="ticker-item">"So lively and so enthusiastically presented"</span><span class="ticker-item">
+          ·</span>
+        <span class="ticker-item">"Very stimulating"</span><span class="ticker-item"> ·</span>
+        <span class="ticker-item pink">"Outstanding mix of video, music and fascinating insights"</span><span
+          class="ticker-item"> ·</span>
+        <span class="ticker-item">"Wonderful walk through my youth"</span><span class="ticker-item"> ·</span>
+        <span class="ticker-item">"Very well put together"</span><span class="ticker-item"> ·</span>
+        <span class="ticker-item pink">"I cried!"</span>
+      </div>
+    </section>
 
-      <span class="quoter">Arts Society Leeds - June 2025</span>
-    </p>
+    <!-- ── 5. SCHEDULE ─────────────────────────────────────────── -->
+    <section class="schedule">
+      <div class="sched-header">
+        <h2>The talks.</h2>
+        <span class="sched-caption">10 programmes · live + online</span>
+      </div>
+      <div class="sched-list">
 
-    <p data-aos="zoom-in-up">
-      "What a wonderful speaker, Very knowledgable. I enjoyed the mix of lyrics and talking”
-      "I thoroughly enjoyed the lecture and was sorry it wasn’t longer"
-      "A very comprehensive and well structured lecture”
-      “Riveting from start to finish"
+        <div class="talk-row">
+          <div class="talk-code">SKT-01</div>
+          <img class="talk-img" src="img/i_write_the_songs.jpg" alt="I Write The Songs">
+          <div class="talk-era">1960s–present</div>
+          <div>
+            <span class="talk-title-link">I Write The Songs</span>
+            <div class="talk-subtitle">The stories behind the songs</div>
+          </div>
+          <div class="talk-desc">"Save The Last Dance For Me" was recorded by the Drifters in 1960, but what single
+            event in the life of the song's lyricist inspired it? What is the truth behind the Beatles song "Lucy In The
+            Sky With Diamonds"? and who is Whitney Houston's biggest hit really about? Steve will answer these questions
+            and more as he reveals the real stories behind some of the world's best known songs.</div>
+          <div id="wt01" class="wave-cell"></div>
+        </div>
 
-      <span class="quoter">Arts Society Taunton - June 2025</span>
-    </p>
+        <div class="talk-row">
+          <div class="talk-code">SKT-02</div>
+          <img class="talk-img" src="img/she_loves_you.jpg" alt="She Loves You — 1960–64">
+          <div class="talk-era">1960–64</div>
+          <div>
+            <span class="talk-title-link">She Loves You</span>
+            <div class="talk-subtitle">The Music of the Sixties (1960–64)</div>
+          </div>
+          <div class="talk-desc">By 1960, interest in rock 'n' roll had started to fade, its biggest star was moving on
+            and a new generation of teenagers were seeking something different. It came in the form of the Beatles, who
+            broke all the rules and all the records. This is the story of the first five years of the 1960s, one of the
+            most creative and innovative periods in the history of music.</div>
+          <div id="wt02" class="wave-cell"></div>
+        </div>
 
-    <p data-aos="zoom-in-up">
-      Our members were virtually unanimous that this was an outstanding lecture. Steve has a
-      very easy and engaging manner which belies the highly professional way in which he approaches
-      his subject. His lecture was articulate, varied and complex, paying close attention to many of
-      the key influences on popular music in the latter half of the sixties. His audio clips were
-      judiciously chosen and excellently presented, married with striking and powerful images; his
-      presentation was smooth and seamless as he guided his audience through the myriad of musical
-      movements at work. He also added significant depth to his talk by exploring the commercial,
-      cultural and social influences which were shaping the output and direction of the music.
-      The talk was lavish in both substance and style and many of our members have asked for a
-      return visit.
+        <div class="talk-row">
+          <div class="talk-code">SKT-03</div>
+          <img class="talk-img" src="img/like_a_rolling_stone.jpg" alt="Like A Rolling Stone — 1965–69">
+          <div class="talk-era">1965–69</div>
+          <div>
+            <span class="talk-title-link">Like A Rolling Stone</span>
+            <div class="talk-subtitle">The Music of the Sixties (1965–69)</div>
+          </div>
+          <div class="talk-desc">In 1965 British music dominated the charts on both sides of the Atlantic and the
+            Beatles were blazing a trail across the world. However, in America, the civil rights and anti-war movements
+            were gaining momentum, influencing a new breed of writers and musicians; electric folk was born, and album
+            sales started to increase exponentially. This is the story of the second half of the sixties featuring the
+            music of the Rolling Stones, Bob Dylan, and the Beatles.</div>
+          <div id="wt03" class="wave-cell"></div>
+        </div>
 
-      <span class="quoter">Rob Smith - Arts Society North Staffordshire - March 2025</span>
-    </p>
+        <div class="talk-row">
+          <div class="talk-code">SKT-04</div>
+          <img class="talk-img" src="img/without_you.jpg" alt="Without You">
+          <div class="talk-era">1970s</div>
+          <div>
+            <span class="talk-title-link">Without You</span>
+            <div class="talk-subtitle">More stories behind the songs</div>
+          </div>
+          <div class="talk-desc">"American Pie" and "Bohemian Rhapsody" are both considered to be defining songs of the
+            seventies, but what do they mean? When Mariah Carey reached number 1 in the UK for the first time, did she
+            know the full story behind the song that took her there? Steve will answer these questions and more when he
+            reveals more of these real stories behind some of the world's best known songs.</div>
+          <div id="wt04" class="wave-cell"></div>
+        </div>
 
+        <div class="talk-row">
+          <div class="talk-code">SKT-05</div>
+          <img class="talk-img" src="img/the_best_selling_songs_of_all_time.jpg"
+            alt="The Best Selling Songs Of All Time">
+          <div class="talk-era">All eras</div>
+          <div>
+            <span class="talk-title-link">The Best Selling Songs Of All Time</span>
+            <div class="talk-subtitle">The top ten, and why</div>
+          </div>
+          <div class="talk-desc">We all have our favourite songs, but which songs make the all-time best sellers list?
+            Steve will reveal the top ten best selling recordings in history, and offer some insight into the reasons
+            why these songs have become so successful.</div>
+          <div id="wt05" class="wave-cell"></div>
+        </div>
 
-    <p data-aos="zoom-in-up">
-      Thank you so much for the most enjoyable and entertaining lecture, everyone loved it.
-      It was lovely to see feet tapping and everyone mouthing the words to all the songs.
-      We would definitely like a follow up.
+        <div class="talk-row">
+          <div class="talk-code">SKT-06</div>
+          <img class="talk-img" src="img/i_bet_you_think_this_song_is_about_you.jpg"
+            alt="I Bet You Think This Song Is About You">
+          <div class="talk-era">1960s–80s</div>
+          <div>
+            <span class="talk-title-link">I Bet You Think This Song Is About You</span>
+            <div class="talk-subtitle">The muses behind the music</div>
+          </div>
+          <div class="talk-desc">Songs are often inspired by individuals who come into the lives of composers — but who
+            are the people that motivated Neil Sedaka, the Beatles, Eric Clapton and Carly Simon to write songs that
+            have become classics?</div>
+          <div id="wt06" class="wave-cell"></div>
+        </div>
 
-      <span class="quoter">Chris Thomas - Arts Society Maidenhead - April 2024</span>
-    </p>
+        <div class="talk-row">
+          <div class="talk-code">SKT-07</div>
+          <img class="talk-img" src="img/get_it_on.jpg" alt="Get It On">
+          <div class="talk-era">1970–74</div>
+          <div>
+            <span class="talk-title-link">Get It On</span>
+            <div class="talk-subtitle">The Music of the Seventies (1970–74)</div>
+          </div>
+          <div class="talk-desc">By the end of the 1960s the UK had established itself as a world leader in popular
+            music, due in no small part to the international success of the Beatles, and those that followed in their
+            wake. This is the story of what happened next — a chronological journey through one of the most varied and
+            innovative periods in the history of music.</div>
+          <div id="wt07" class="wave-cell"></div>
+        </div>
 
-    <p data-aos="zoom-in-up">
-      “Stephen was a great hit with the guests, he really knows his subject
-      and makes it very interesting.”
-      <span class="quoter">Fred Olsen Cruises - Black Watch</span>
-    </p>
+        <div class="talk-row">
+          <div class="talk-code">SKT-08</div>
+          <img class="talk-img" src="img/cool_for_cats.jpg" alt="Cool For Cats">
+          <div class="talk-era">1975–79</div>
+          <div>
+            <span class="talk-title-link">Cool For Cats</span>
+            <div class="talk-subtitle">The Music of the Seventies (1975–79)</div>
+          </div>
+          <div class="talk-desc">The biggest selling song of 1975 in the UK was a song from the 60s by a band whose fans
+            were all too young to remember the original. New teen sensations and disco dominated the singles chart, and
+            album sales were soaring as progressive rock reached its height. The late seventies were set up to be the
+            age of the superstar, but someone spoiled the party.</div>
+          <div id="wt08" class="wave-cell"></div>
+        </div>
 
-    <p data-aos="zoom-in-up">
-      “Steve's lecture received amazing feedback from members. We look forward to welcoming him back at some point in
-      the future.
-      <span class="quoter">Arts Society Nottingham - December 2023</span>
-    </p>
+        <div class="talk-row">
+          <div class="talk-code">SKT-09</div>
+          <img class="talk-img" src="img/you_never_give_me_your_money.jpg" alt="You Never Give Me Your Money">
+          <div class="talk-era">Cross-decade</div>
+          <div>
+            <span class="talk-title-link">You Never Give Me Your Money</span>
+            <div class="talk-subtitle">Copyright, Plagiarism and Infighting</div>
+          </div>
+          <div class="talk-desc">A closer look at music copyright and the legal disputes and creative clashes that have
+            helped shape the copyright law over the last 60 years. Featuring the stories behind tracks by George
+            Harrison, Ed Sheeran, Procol Harum and Miley Cyrus the dynamics of authorship, originality, and ownership
+            are explored. These cases reveal how copyright laws impact artistic expression, how plagiarism accusations
+            are resolved, and how infighting over composer credits can cause issues that remain unresolved for decades.
+          </div>
+          <div id="wt09" class="wave-cell"></div>
+        </div>
 
-    <p data-aos="zoom-in-up">
-      "Thank you so much for an absolutely wonderful talk. I’ve never seen our members so animated afterwards”
-      <span class="quoter">Louise Capell - Arts Society - Richmond Upon Thames December 2022</span>
-    </p>
+        <div class="talk-row">
+          <div class="talk-code">SKT-10</div>
+          <img class="talk-img" src="img/and_the_beat_goes_on.jpg" alt="And The Beat Goes On">
+          <div class="talk-era">1970s</div>
+          <div>
+            <span class="talk-title-link">And The Beat Goes On</span>
+            <div class="talk-subtitle">The Story of Disco</div>
+          </div>
+          <div class="talk-desc">Disco music came about in part as a reaction to 1960s counterculture, and was initially
+            enjoyed by those who didn't feel they had a voice in mainstream society. The story of how dance music took
+            the world by storm…</div>
+          <div id="wt10" class="wave-cell"></div>
+        </div>
 
-    <p data-aos="zoom-in-up">
-      "Steve received the longest ovation I have heard at our society, and a lot of members came up to speak
-      to him afterwards to regale him with anecdotes of their memories of the '60s”
-      <span class="quoter">Arts Society Petersfield - April 2023</span>
-    </p>
+      </div>
+    </section>
 
-    <p data-aos="zoom-in-up">
-      “It was my great pleasure to hear and participate in Steve King’s
-      lectures on the Queen Mary 2. His extensive knowledge of popular music,
-      its history, inside stories of singers and groups and his engaging
-      presentation style enriched my learning and enhanced my cruising
-      experience. Thank you Steve”
-      <span class="quoter">Norma Bandler - Philanthropy Advocate</span>
-    </p>
+    <!-- ── 6. PROFILE ─────────────────────────────────────────── -->
+    <section class="profile">
+      <img src="img/steve_profile.jpg" alt="Steve King"
+        style="width:100%;height:460px;object-fit:cover;object-position:right center;display:block;">
+      <div>
+        <div class="profile-eyebrow">PROFILE · TX 01</div>
+        <h2>Forty years <span class="pink">on the dial.</span></h2>
+        <div class="profile-body">
+          <p>Steve has spent 35 years working in the radio industry. He is a popular Music Historian, Broadcaster,
+            Programmer and Events Director. He has managed some of the biggest radio brands in the UK and has worked
+            with many well known popular music artists.</p>
+          <p>His love of popular music and his work as a radio presenter and Events Director has enabled him to meet and
+            work with artists including Olly Murs, Robbie Williams, U2, Ed Sheeran and Rita Ora. Steve has directed over
+            50 multi-artist events at venues including the Royal Albert Hall, London Palladium and Wembley Arena.</p>
+          <p>Steve has lectured at various media conferences and industry events during his career and more recently on
+            cruise ships for Cunard, Fred Olsen, Saga, P&amp;O and Marella. He currently runs his own media consultancy.
+          </p>
+        </div>
+        <div class="cred-grid">
+          <div class="cred-chip"><span class="bullet">● </span>Accredited Lecturer, The Arts Society (May 2021)</div>
+          <div class="cred-chip"><span class="bullet">● </span>35+ years in commercial radio</div>
+          <div class="cred-chip"><span class="bullet">● </span>50+ multi-artist events directed</div>
+          <div class="cred-chip"><span class="bullet">● </span>Lectured for Cunard, P&amp;O, Fred Olsen, Saga, Marella
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <p data-aos="zoom-in-up">
-      “We would be interested in Stephen King if he was available for this, he
-      scored so well on his last cruise”
-      <span class="quoter">P & O Cruises - Azura</span>
-    </p>
+    <!-- ── 7. FOOTER ──────────────────────────────────────────── -->
+    <footer class="footer-section">
+      <div class="footer-grid">
+        <div>
+          <!-- NOTE: update year to current/next booking season at each build -->
+          <div class="footer-eyebrow">BOOKING REQUESTS / 2026 SEASON</div>
+          <h2>Get the show<br>on the road.</h2>
+          <p class="footer-copy">Live talks, online lectures and cruise programmes. All equipment including PA,
+            projector and screen can be supplied.</p>
+        </div>
+        <div class="footer-right">
+          <a class="footer-email"
+            href="mailto:sktalks@outlook.com?subject=Booking%20enquiry%20%E2%80%94%20Steve%20King%20Talks">sktalks@outlook.com</a>
+          <div id="wave-footer" style="margin-top:18px"></div>
+        </div>
+      </div>
+      <div class="footer-sig">
+        <span>© SKT Broadcast</span>
+        <!-- NOTE: confirm "since 2021" accreditation date with client before shipping -->
+        <span>Accredited Lecturer · The Arts Society · since 2021</span>
+        <span>Transmitting in stereo</span>
+      </div>
+    </footer>
 
-    <p data-aos="zoom-in-up">
-      "Outstanding. Highly entertaining and very informative. It was a nostalgic superbly presented trip down memory
-      lane and included new insights in the period.
-      Steve was an outstanding speaker and the accompanying sound and visuals were fantastic and technically faultless."
-      <span class="quoter">Arts Society Kings Lynn - December 2023</span>
-    </p>
+    <script>
+      // ── WAVE SVG GENERATOR ──────────────────────────────────────
+      // Deterministic pseudo-random bar heights matching design reference WaveL function
+      function wave(bars, h, accent, dim) {
+        let s = '';
+        for (let i = 0; i < bars; i++) {
+          const env = Math.sin((i / bars) * Math.PI);
+          const n = ((Math.sin(i * 12.9898) * 43758.5453) % 1 + 1) % 1;
+          const v = 0.15 + env * 0.6 * (0.55 + 0.45 * n);
+          const bh = v * h;
+          const y = (h - bh) / 2;
+          const f = i % 7 === 0 ? accent : dim;
+          s += `<rect x="${i * 4}" y="${y.toFixed(1)}" width="2.4" height="${bh.toFixed(1)}" rx="1" fill="${f}"/>`;
+        }
+        return `<svg viewBox="0 0 ${bars * 4} ${h}" preserveAspectRatio="none" style="display:block;width:100%;height:${h}px">${s}</svg>`;
+      }
 
-    <p data-aos="zoom-in-up">
-      “Steve gave a very polished and interesting lecture. Everyone present was delighted with it all. The presentation
-      was informative,
-      amusing and accompanied with exceptional audio content. Highly recommended.”
-      <span class="quoter">Arts Society Gainsborough & District - June 2023</span>
-    </p>
+      const PK = '#D82C66', DM = '#dccbb8';
 
-    <p data-aos="zoom-in-up">
-      “They love you Steve :) You went down really well onboard”
-      <span class="quoter">Cunard – Queen Mary II</span>
-    </p>
+      document.getElementById('wave-hero').innerHTML = wave(140, 60, PK, DM);
+      document.getElementById('wave-footer').innerHTML = wave(80, 40, PK, DM);
 
-
-    <h3>TALKS</h3>
-
-    <h4 data-aos="zoom-in-up" class="titles2">I WRITE THE SONGS</h4>
-
-    <p data-aos="zoom-in-up">
-      “Save The Last Dance For Me” was recorded by the Drifters in 1960, but
-      what single event in the life of the song’s lyricist inspired it? What
-      is the truth behind the Beatles song “Lucy In The Sky With Diamonds”?
-      and who is Whitney Houston’s biggest hit really about? Steve will answer
-      these questions and more as he reveals the real stories behind some of
-      the world’s best known songs.
-    </p>
-
-    <h4 data-aos="zoom-in-up" class="titles1">
-      SHE LOVES YOU<br />
-      The Music of the Sixties (1960-64)
-    </h4>
-
-    <p data-aos="zoom-in-up">
-      By 1960, interest in rock ‘n’ roll had started to fade, its biggest star
-      was moving on and a new generation of teenagers were seeking something
-      different. It came in the form of the Beatles, who broke all the rules
-      and all the records. This is the story of the first five years of the
-      1960s, one of the most creative and innovative periods in the history of
-      music.
-    </p>
-
-    <h4 data-aos="zoom-in-up" class="titles1">
-      LIKE A ROLLING STONE<br />
-      The Music of the Sixties (1965-69)
-    </h4>
-
-    <p data-aos="zoom-in-up">
-      In 1965 British music dominated the charts on both sides of the Atlantic
-      and the Beatles were blazing a trail across the world. However, in America,
-      the civil rights and anti-war movements were gaining momentum, influencing a new 
-      breed of writers and musicians; electric folk was born, and album sales
-      started to increase exponentially. This is the story of the second half of the
-      sixties featuring the music of the Rolling Stones, Bob Dylan, and the Beatles.
-    </p>
-
-    <h4 data-aos="zoom-in-up" class="titles1">
-      WITHOUT YOU
-    </h4>
-
-    <p data-aos="zoom-in-up">
-      “American Pie” and “Bohemian Rhapsody” are both considered to be defining
-      songs of the seventies, but what do they mean? When Mariah Carey reached
-      number 1 in the UK for the first time, did she know the full story behind
-      the song that took her there? Steve will answer these questions and more
-      when he reveals more of these real stories behind some of the world’s best
-      known songs.
-    </p>
-
-    <h4 data-aos="zoom-in-up" class="titles1">
-      THE BEST SELLING SONGS OF ALL TIME
-    </h4>
-
-    <p data-aos="zoom-in-up">
-      We all have our favourite songs, but which songs make the all-time best
-      sellers list? Steve will reveal the top ten best selling recordings in
-      history, and offer some insight into the reasons why these songs have
-      become so successful.
-    </p>
-
-    <h4 data-aos="zoom-in-up" class="titles1">
-      I BET YOU THINK THIS SONG IS ABOUT YOU
-    </h4>
-
-    <p data-aos="zoom-in-up">
-      Songs are often inspired by individuals who come into the lives
-      of composers, but who are the people that motivated artists including
-      Neil Sedaka, the Beatles, Eric Clapton and Carly Simon to write
-      songs that have become classics?
-
-    <h4 data-aos="zoom-in-up" class="titles1">
-      GET IT ON <br /> The Music of the Seventies (1970-74)
-    </h4>
-
-    <p data-aos="zoom-in-up">
-      By the end of the 1960s the UK had established itself as a world leader
-      in popular music, due in no small part to the international success of
-      the Beatles, and those that followed in their wake. This is the story of
-      what happened next - a chronological journey through one of the most
-      varied and innovative periods in the history of music.
-    </p>
-
-    <h4 data-aos="zoom-in-up" class="titles1">
-      COOL FOR CATS <br />
-      The Music of the Seventies (1975-79)
-    </h4>
-
-    <p data-aos="zoom-in-up">
-      The biggest selling song of 1975 in the UK was a song from the 60s by a
-      band whose fans were all too young to remember the original. New teen
-      sensations and disco dominated the singles chart, and album sales were
-      soaring as progressive rock reached its height. The late seventies were
-      set up to be the age of the superstar, but someone spoiled the party.
-    </p>
-
-
-    <h4 data-aos="zoom-in-up" class="titles1">
-      YOU NEVER GIVE ME YOUR MONEY<br />
-      Copyright, Plagiarism and Infighting
-    </h4>
-
-    <p data-aos="zoom-in-up">
-      A closer look at music copyright and the legal disputes and creative clashes that
-      have helped shape the copyright law over the last 60 years. Featuring the stories
-      behind tracks by George Harrison, Ed Sheeran, Procol Harum and Miley Cyrus the
-      dynamics of authorship, originality, and ownership are explored. These cases reveal
-      how copyright laws impact artistic expression, how plagiarism accusations are resolved,
-      and how infighting over composer credits can cause issues that remain unresolved
-      for decades.
-    </p>
-
-
-
-    <h4 data-aos="zoom-in-up" class="titles1">
-      AND THE BEAT GOES ON<br />
-      The Story of Disco
-    </h4>
-    <p data-aos="zoom-in-up">
-      Disco music came about in part as a reaction to 1960s counterculture, and was
-      initially enjoyed by those who didn’t feel they had a voice in mainstream society.
-      However, it developed rapidly both as a genre and a subculture throughout the 1970s,
-      eventually becoming so dominant that even Rod Stewart and The Rolling Stones put
-      out Disco tracks. This is the story of how this form of dance music took the
-      world by storm, and of how three brothers born in the Isle of man found themselves
-      at its epicentre, almost by accident.
-    </p>
-
-
-  </div>
-
-  <div class="margin2"></div>
-  <section class="parallax2">
-    <div class="parallax-inner2">
-      <h2 data-aos="fade-up">
-        "He scored a phenomenal 9 out of 10, so he appeared to go down very well
-        with the guests!"
-
-        <span class="quoter">P & O Cruises - Britannia</span>
-      </h2>
-    </div>
-  </section>
-  <div class="container info">
-
-
-    <h4>Profile</h4>
-
-    <p data-aos="zoom-in-up">
-      Steve King has spent 35 years working in the radio industry. He is a
-      popular Music Historian, Broadcaster, Programmer and Events Director. He
-      has managed some of the biggest radio brands in the UK and has worked
-      with many well known popular music artists. Steve is an engaging public
-      speaker and has produced a series of highly entertaining lectures based
-      on his extensive knowledge of popular music and his experiences in the
-      radio business. He became an accredited lecturer for The Arts Society in
-      May 2021.
-    </p>
-
-    <p data-aos="zoom-in-up">
-      During his career, Steve has operated at the highest level in the
-      commercial radio industry. He has created market leading radio brands
-      and his work has been recognised by the industry on many occasions. His
-      love of popular music and his work as a radio presenter and Events
-      Director has enabled him to meet and work with many well known artists
-      including Olly Murs, Robbie Williams, U2, Ed Sheeran and Rita Ora. Steve
-      has directed over 50 multi-artist events at venues including the Royal
-      Albert Hall, London Palladium and Wembley Arena.
-    </p>
-
-    <p data-aos="zoom-in-up">
-      Steve has lectured at various media conferences and industry events
-      during his career and more recently on cruise ships for Cunard, Fred
-      Olsen, Saga, P&O and Marella. He currently runs his own media
-      consultancy.
-    </p>
-
-    <h4>Live Talks</h4>
-    <p data-aos="zoom-in-up">
-      The talks and lectures described above can be provided in almost any
-      venue. All equipment including PA, projector and
-      screen can be supplied.
-      If you need more any more information or would like to see my showreel email the address below.
-    </p>
-
-    <h4>Online Talks</h4>
-    <p data-aos="zoom-in-up">
-      Welcome to Episode 2 of Artfully Said, an Arts Society podcast: “’70s Music and Fashion From Dancefloor to Runway.”
-      Arts Society accredited lecturers Steve King (music historian) and Scott Schiavone (fashion curator) unpack how sound and 
-      style collided to create one of the most inventive eras in modern culture. From disco’s sweltering dance floors and punk’s 
-      raw rebellion to glam rock’s theatrical excess, they trace how innovation, the political climate, and creativity reshaped what 
-      people listened to- and what they wore while doing it.
-      Stream Artfully Said now on Apple Podcasts, Spotify, YouTube or wherever you get your podcasts.
-    </p>
-    <iframe src="https://www.youtube.com/embed/_otb9ZNgAKs?si=HBHdCMpAH0-ZkhNl"
-      title="YouTube video player" frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  </div>
-  <div class="footer">
-    <p>Steve King Talks</p>
-
-    <p>Contact:</p>
-    <p>
-      <a class="email" href="mailto:sktalks@outlook.com">sktalks@outlook.com
-      </a>
-    </p>
-    <br />
-  </div>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800,
-    });
-  </script>
-</body>
+      for (let i = 1; i <= 10; i++) {
+        const el = document.getElementById('wt' + String(i).padStart(2, '0'));
+        if (el) el.innerHTML = wave(28, 36, PK, DM);
+      }
+    </script>
+  </body>
 
 </html>
